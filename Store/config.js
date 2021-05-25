@@ -19,7 +19,7 @@ const Menu = {
 
 
 
-
+document.getElementById('useraccount').addEventListener('click',()=>{window.location.href = "form_account.html";});
 let menu = document.getElementById("menu");
 let logo = document.getElementById("logo");
 let specialoffers = document.getElementById("specialoffers");

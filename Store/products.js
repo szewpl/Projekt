@@ -1,11 +1,27 @@
-var Description = [
-    {"Seria":"Classic","Nazwa": "Creative Bricks","Wiek": "4-99","Ilość klocków": "100-250","Opis":"Rzuć się w wir kreatywnej zabawy za pomocą tego zestawu klocków LEGO i daj się ponieść własnej wyobraźni! Zestaw oferuje nieograniczone możliwości budowania za pomocą klasycznych klocków w 29 różnych kolorach oraz elementów specjalnych takich jak drzwi, okna, koła, oczy czy śmigła. A jeśli nie wiesz od czego zacząć, możesz wspomóc się dołączonymi instrukcjami z przykładowymi pomysłami."},
-    {"Ekran":"15,6 cala, 1920 x 1080 pikseli","Procesor":"Intel Core i5 10gen 10300H","Liczba rdzeni":4,"Pamięć RAM":8 +" GB","Karta graficzna": "nVidia GeForce GTX1650 Ti"},
-];
+var addprod = document.getElementById('addproduct');
 
-var Products = [
-    {id:0,id_category:4,name:"Klocki LEGO Classic",img:"pictures/klockilegoclassic.jpg",price:129.99,description: Description[0]},
-    {id:1,id_category:8,name:"Laptop Asus",img:"pictures/laptopasus.png",price:2199.99,description: Description[1]},
-];
+addprod.setAttribute('style','border-top:2px solid #ff3333;width:75%;margin-left:auto;margin-right:auto;border-bottom:2px solid #ff3333;');
 
-console.log(Object.keys(Products[0].description)[3]);
+var select = document.createElement("select");
+for(let i=0;i<Categories.length;i++)
+{
+    if(Categories[i].parent_id>0){
+        var option = document.createElement("option");
+        option.text = Categories[i].name;
+        select.add(option);
+    }
+}
+
+addprod.appendChild(select);
+select.addEventListener("change",()=>{console.log(select.value);});
+
+/*if(localStorage.getItem("product_id") == null){
+    localStorage.setItem("product_id",0);
+}else{
+    localStorage.setItem("product_id",parseInt( localStorage.getItem("product_id"))+1);
+}*/
+/*var prod = new Array(0);
+var des = new Array(0);
+prod[0] = {"es":"elo","jd":"kurwe"};
+localStorage.setItem("produkt",JSON.stringify(prod[0]));
+console.log(JSON.parse(localStorage.getItem("produkt")));*/
