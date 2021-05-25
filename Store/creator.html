@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sklep z zabawkami</title>
+    <style>
+        body{
+            background-color: #303030;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <div id="menu">
+            <div id="logo" onselectstart = "return false;"></div>
+            <div id="specialoffers" onselectstart = "return false;"></div>
+            <div id="useraccount" onselectstart = "return false;"></div>
+        </div>
+        <div id="main">
+            <div id="products"></div>
+            <div id="categories"></div>
+        </div>
+        <div id="mainadd" style="display: flex;">
+            <div id="addproduct"></div>
+        </div>
+    </div>
+</body>
+<script src="config.js"></script>
+<script>
+    document.getElementById('useraccount').addEventListener('click',()=>{window.location.href = "form_account.html";});
+
+    var addprod = document.getElementById('addproduct');
+    var addcate = document.getElementById('addcategory');
+
+    addprod.setAttribute('style','border-top:2px solid #ff3333;width:75%;margin-left:auto;margin-right:auto;border-bottom:2px solid #ff3333;');
+</script>
+</html>

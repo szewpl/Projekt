@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sklep z zabawkami</title>
+    <style>
+        body{
+            background-color: #303030;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <div id="menu">
+            <div id="logo" onselectstart = "return false;"></div>
+            <div id="specialoffers" onselectstart = "return false;"></div>
+            <div id="useraccount" onselectstart = "return false;"></div>
+        </div>
+        <div id="main">
+            <div id="products"></div>
+            <div id="categories"></div>
+        </div>
+        <div id="logowanie">
+            <lable>Login: </lable><input type="text" id="login">
+            <lable>Hasło: </lable><input type="text" id="password">
+            <input type="submit" id="submit" value="Zaloguj się" onclick="check();">
+        </div>
+    </div>
+</body>
+<script src="config.js"></script>
+<script>
+    function check(){
+        var login = document.getElementById('login').value;
+        var passsword = document.getElementById('password').value;
+
+        if(login == "admin" && passsword == "admin")
+        {
+            window.location.href = "creator.html";
+        }
+    }
+    
+</script>
+</html>
