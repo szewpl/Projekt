@@ -24,9 +24,15 @@
         </div>
         <div id="mainadd" style="display: flex;">
             <div id="addproduct">
-                
+                <div id="addproducts">
+                    <select id="addselect"></select><br>
+                    <input type="url" placeholder="Wpisz adres URL" id="url"><br>
+                    <input type="number" min="0" id="price"><br>
+                    <textarea id="textarea" rows="2" cols="50" style="resize: none;"></textarea><br>
+                    <button onclick="addinputs()">Dodaj dane techniczne</button><br>
+                </div>
+                <button id="addprod">Dodaj</button>
             </div>
-            <button id="addprod">Dodaj</button>
         </div>
     </div>
 </body>
