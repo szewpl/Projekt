@@ -36,7 +36,7 @@ class createProduct{
         
         var o = JSON.stringify(prod);
         var name = "Produkt"+parseInt(localStorage.getItem("product_id"));
-        document.cookie = "name="+name+";"+o;
+        document.cookie = "Name="+name+";"+"Value="+o+";";
         location.reload();
     }
     
