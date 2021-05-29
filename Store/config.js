@@ -18,12 +18,13 @@ const Menu = {
 
 
 
-
+document.querySelector("body").style.backgroundColor = "#303030";
 document.getElementById('useraccount').addEventListener('click',()=>{window.location.href = "form_account.html";});
 let menu = document.getElementById("menu");
 let logo = document.getElementById("logo");
 let specialoffers = document.getElementById("specialoffers");
 let useraccount = document.getElementById("useraccount");
+
 
 logo.innerHTML = Menu.logo.name;
 logo.setAttribute('style','width:33.33%;text-align:center;border-right:5px solid #303030;');
