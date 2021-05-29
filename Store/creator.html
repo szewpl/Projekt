@@ -41,4 +41,9 @@
 <script src="categories.js"></script>
 <script src="products.js"></script>
 <script src="dprod.js"></script>
+<script>
+    if(localStorage.getItem("product_id") <6 || localStorage.getItem("product_id")==null){
+        localStorage.setItem("product_id",6);
+    }    
+</script>
 </html>
