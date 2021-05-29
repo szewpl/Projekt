@@ -23,13 +23,17 @@ class createProduct{
         if(localStorage.getItem("product_id") < 6)
         {
             localStorage.setItem("product_id",6);
+            var prod={"Id":parseInt(localStorage.getItem("product_id")),"category_id":select.value,"url":zdj.value,"Cena":price.value,"Opis":textarea.value,"Nazwa":nameprod.value};
+        
+            localStorage.setItem("Produkt"+parseInt(localStorage.getItem("product_id")),JSON.stringify(prod));
+            location.reload();
         }else{
             localStorage.setItem("product_id",parseInt(localStorage.getItem("product_id"))+1);
-        }
-        var prod={"Id":parseInt(localStorage.getItem("product_id")),"category_id":select.value,"url":zdj.value,"Cena":price.value,"Opis":textarea.value,"Nazwa":nameprod.value};
+            var prod={"Id":parseInt(localStorage.getItem("product_id")),"category_id":select.value,"url":zdj.value,"Cena":price.value,"Opis":textarea.value,"Nazwa":nameprod.value};
         
-        localStorage.setItem("Produkt"+parseInt(localStorage.getItem("product_id")),JSON.stringify(prod));
-        location.reload();
+            localStorage.setItem("Produkt"+parseInt(localStorage.getItem("product_id")),JSON.stringify(prod));
+            location.reload();
+        }
     }
 }
 
