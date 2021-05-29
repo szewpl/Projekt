@@ -3,14 +3,13 @@ var addprod = document.getElementById('addproduct');
 addprod.setAttribute('style','border-top:2px solid #ff3333;width:75%;margin-left:auto;margin-right:auto;border-bottom:2px solid #ff3333;');
 
 
-var k = document.getElementsByClassName("keys");
-var v = document.getElementsByClassName("values");
 var addprods = document.getElementById("addproducts");
 var select = document.getElementById("addselect");
 var zdj = document.getElementById("url");
 var price = document.getElementById("price");
 var textarea = document.getElementById("textarea");
 var btadd = document.getElementById("addprod");
+var nameprod = document.getElementById("name");
 const description = {};
 var counter = 0;
 
@@ -24,47 +23,26 @@ for(let i=0;i<Categories.length;i++)
     }
 }
 
-function addinputs(){
-    var keys = document.createElement('input');
-    var values = document.createElement('input');
-    var br = document.createElement('br');
-
-    keys.classList.add("keys");
-    values.classList.add("values");
-    keys.placeholder = "Nazwa dany";
-    values.placeholder = "Wartosc danej";
-
-    addprods.appendChild(keys);
-    addprods.appendChild(values);
-    addprods.appendChild(br);
-    counter++;
-}
-
 class createProduct{
-    dodajopis(){
-        for(let i = 0;i<k.length;i++)
-        {
-           description[k[i].value] = v[i].value;
-        }
-    }
     savels(){
-        /*if(localStorage.getItem("product_id") == null)
+        if(localStorage.getItem("product_id") == null)
         {
             localStorage.setItem("product_id",0);
         }else{
-            id = localStorage.setItem("product_id",parseInt(localStorage.getItem("product_id"))+1);
-        }*/
-        const prod = {"Id":parseInt(localStorage.getItem("product_id")),"Id kategori":select.value,"Img":zdj.value,"Cena":price.value,"Krótki opis":textarea.value,"Dane techniczne":description};
+            localStorage.setItem("product_id",parseInt(localStorage.getItem("product_id"))+1);
+        }
+        const prod = {"Id":parseInt(localStorage.getItem("product_id")),"Id kategori":select.value,"Img":zdj.value,"Cena":price.value,"Krótki opis":textarea.value,"Nazwa":nameprod.value};
         console.log(prod);
         
-        
-        //localStorage.setItem("Produkt"+parseInt(localStorage.getItem("product_id")),);
+        var o = JSON.stringify(prod);
+        var name = "Produkt"+parseInt(localStorage.getItem("product_id"));
+        document.cookie = "name="+name+";"+o;
+        location.reload();
     }
     
 }
 var c = new createProduct();
 btadd.addEventListener("click",()=>{
-    c.dodajopis();
     c.savels();
 });
 

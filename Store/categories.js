@@ -1,5 +1,5 @@
 const Categories = [
-    {id:1,parent_id:0,name:"Zabawki","Dane techniczne":desc},
+    {id:1,parent_id:0,name:"Zabawki"},
     {id:2,parent_id:1,name:"Pluszaki"},
     {id:3,parent_id:1,name:"Puzzle"},
     {id:4,parent_id:1,name:"Klocki"},
@@ -7,10 +7,6 @@ const Categories = [
     {id:6,parent_id:5,name:"Mały mechanik"},
     {id:7,parent_id:5,name:"Mały programista"},
     {id:8,parent_id:5,name:"Laptopy"},
-];
-
-const desc = [
-    ["Procesor","elo"],
 ];
 
 function display_categories(){
