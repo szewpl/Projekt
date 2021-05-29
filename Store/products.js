@@ -34,9 +34,8 @@ class createProduct{
         const prod = {"Id":parseInt(localStorage.getItem("product_id")),"Id kategori":select.value,"Img":zdj.value,"Cena":price.value,"Krótki opis":textarea.value,"Nazwa":nameprod.value};
         console.log(prod);
         
-        var o = JSON.stringify(prod);
-        var name = "Produkt"+parseInt(localStorage.getItem("product_id"));
-        document.cookie = "Name="+name+";"+"Value="+o+";";
+        
+        localStorage.setItem("Produkt"+parseInt(localStorage.getItem("product_id")),JSON.stringify(prod));
         location.reload();
     }
     
