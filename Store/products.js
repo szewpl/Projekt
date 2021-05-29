@@ -60,6 +60,9 @@ function display_products(){
 }
 
 var c = new createProduct();
-btadd.addEventListener("click",()=>{
+if(btadd)
+{
+    btadd.addEventListener("click",()=>{
     c.savels();
-});
+    });
+}
