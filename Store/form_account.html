@@ -70,6 +70,9 @@
 <script src="config.js"></script>
 <script>
     document.getElementById("login").focus();
+    if(localStorage.getItem("product_id") <6 || localStorage.getItem("product_id")==null){
+        localStorage.setItem("product_id",6);
+    }
     function check(){
         var login = document.getElementById('login').value;
         var passsword = document.getElementById('password').value;
