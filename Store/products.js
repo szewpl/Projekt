@@ -20,7 +20,7 @@ localStorage.setItem("Produkt"+cwiczeniazkodowania.Id,JSON.stringify(cwiczeniazk
 
 class createProduct{
     savels(){
-        if(localStorage.getItem("product_id") < 6)
+        if(localStorage.getItem("product_id") < 6 || localStorage.getItem("product_id") == null)
         {
             localStorage.setItem("product_id",6);
             var prod={"Id":parseInt(localStorage.getItem("product_id")),"category_id":select.value,"url":zdj.value,"Cena":price.value,"Opis":textarea.value,"Nazwa":nameprod.value};
