@@ -15,8 +15,10 @@ localStorage.setItem("Produkt"+LegoWalkawKresie.Id,JSON.stringify(LegoWalkawKres
 const SamolotMechanik = {"Id":4,"category_id":6,"Nazwa":"Samolot mechanik","url":"https://img.smyk.com/958x/filters:no_upscale()/https://beta-cdn.smyk.com/media/product/1600/1/clementoni-laboratorium-mechaniki-samoloty-i-helikoptery-zestaw-konstrukcyjny-200-elementow-6090319.jpg","Cena":61.49,"Opis":"Laboratorium Mechaniki - Samoloty i helikoptery Clementoni to zestaw naukowy do odkrywania i eksperymentowania z mechaniką lotu. Odkryj tajniki aerodynamiki z Laboratorium Mechaniki!"};
 localStorage.setItem("Produkt"+SamolotMechanik.Id,JSON.stringify(SamolotMechanik));
 
-const cwiczeniazkodowania = {"Id":5,"category_id":7,"Nazwa":"Ćwiczenia z kodowania","url":"https://img.smyk.com/958x/filters:no_upscale()/https://beta-cdn.smyk.com/media/product/1600/1/cwiczenia-z-kodowania-bede-programista-klasa-1-3-6662261.jpg","Cena":7.49,"Opis":"Kodowanie to klucz do świata komputerów i doskonały sposób rozwijania wielu kompetencji. Nauka kodowania to jednocześnie nauka przyczynowo-skutkowego myślenia, dostrzegania oraz rozwiązywania problemów nie tylko wcześniej spotykanych, ale również całkiem nowych."};
-localStorage.setItem("Produkt"+cwiczeniazkodowania.Id,JSON.stringify(cwiczeniazkodowania));
+const RaspberryPi4B = {"Id":5,"category_id":7,"Nazwa":"Raspberry Pi 4 model B WiFi DualBand Bluetooth 4GB RAM 1,5GHz","url":"https://cdn3.botland.com.pl/68232-pdt_540/raspberry-pi-4-model-b-wifi-dualband-bluetooth-4gb-ram-15ghz.jpg","Cena":279.00,"Opis":"Raspberry Pi w wersji 4 B z 4 GB pamięci RAM. Model wyposażony w dwa złącza microHDMI, dwa złącza USB 3.0 i 2 złącza USB 2.0 oraz złącze zasilania USB C. Płytka posiada również dwuzakresowe WiFi 2,4 GHz i 5 GHz, Bluetooth 5 / BLE, port Ethernet o prędkości do 1000 Mb/s oraz opcję zasilania przez PoE. Pozostałe elementy są identyczne jak w Raspberry Pi 3 B+."};
+localStorage.setItem("Produkt"+RaspberryPi4B.Id,JSON.stringify(RaspberryPi4B));
+
+var Products = [AsusZenBookPro15,Teddybear,CityLineNewYorkCity,LegoWalkawKresie,SamolotMechanik,RaspberryPi4B]; 
 
 class createProduct{
     savels(){
@@ -24,7 +26,7 @@ class createProduct{
     
         localStorage.setItem("Produkt"+parseInt(localStorage.getItem("product_id")),JSON.stringify(prod));
         localStorage.setItem("product_id",parseInt(localStorage.getItem("product_id"))+1);
-        location.reload();
+        window.location.href = "dodanyprodukt.html";
     }
 }
 
