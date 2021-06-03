@@ -34,25 +34,26 @@ function display_products(){
     var p = document.getElementById("products");
     for(let i = 0;i<parseInt(localStorage.getItem("product_id"));i++){
         var img = document.createElement("img");
-        var nameimg = document.createElement("h3"); 
+        var nameimg = document.createElement("h3");
+        var divogl = document.createElement("div"); 
         var div = document.createElement("div");
         var a = document.createElement("a");
         var obj = JSON.parse(localStorage.getItem("Produkt"+i));
 
-
-        a.innerHTML = obj.Opis;
+        let l = obj.Cena;
+        a.innerHTML = obj.Opis + "<br>" + parseFloat(l).toFixed(2);
         div.style.float = "right";
         div.setAttribute('style',"margin-left:auto;margin-right:auto;");
         nameimg.innerHTML = obj.Nazwa;
         img.src = obj.url;
         img.style.width = "300px";
         img.style.height = "300px";
-        img.style.grid
 
         div.appendChild(a);
-        p.appendChild(nameimg);
-        p.appendChild(img);
-        p.appendChild(div);
+        divogl.appendChild(nameimg);
+        divogl.appendChild(img);
+        divogl.appendChild(div);
+        p.appendChild(divogl);
     }
 }
 

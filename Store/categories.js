@@ -15,6 +15,10 @@ function display_categories(){
         var div = document.getElementById("categories");
         var a = document.createElement("a");
         a.innerHTML = Categories[i].name + "<br>";
+        if(Categories[i].parent_id != 0)
+        {
+            a.addEventListener("click",()=>{window.location.href = "prodcat.html?dist="+Categories[i].id;});
+        }
         div.appendChild(a);
         if(Categories[i].parent_id > 0 && Categories[i].parent_id != 10)
         {
