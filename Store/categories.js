@@ -17,7 +17,8 @@ function display_categories(){
         a.innerHTML = Categories[i].name + "<br>";
         if(Categories[i].parent_id != 0)
         {
-            a.addEventListener("click",()=>{window.location.href = "prodcat.html?dist="+Categories[i].id;});
+            a.addEventListener("click",()=>{window.location.href = "prodcat.html?categoryid="+parseInt(Categories[i].id-1);});
+            a.style.cursor = "pointer";
         }
         div.appendChild(a);
         if(Categories[i].parent_id > 0 && Categories[i].parent_id != 10)

@@ -43,7 +43,7 @@
     var p = document.getElementById("products");
     for(let i = 0;i<parseInt(localStorage.getItem("product_id"));i++){
             let pr = JSON.parse(localStorage.getItem("Produkt"+i));
-            if(Categories[parseInt(GetQueryString().dist)-1].id == pr.category_id)
+            if(Categories[parseInt(GetQueryString().categoryid)].id == pr.category_id)
             {
                 var img = document.createElement("img");
                 var divogl = document.createElement("div");
