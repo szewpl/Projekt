@@ -1,6 +1,6 @@
 var btadd = document.getElementById("addprod");
 
-const AsusZenBookPro15 = {"Id":0,"category_id":8,"Nazwa":"Asus ZenBook Pro 15","url":"images/test.jpg","Cena":7499.00,"Opis":"ZenBook Pro 15 został zaprojektowany z myślą o zapewnieniu wysokiej mocy i produktywności, dlatego idealnie pomoże Ci w tworzeniu treści – w każdym miejscu i czasie."};
+const AsusZenBookPro15 = {"Id":0,"category_id":8,"Nazwa":"Asus ZenBook Pro 15","url":"https://cdn.x-kom.pl/i/setup/images/prod/big/product-new-big,,2018/8/pr_2018_8_8_15_37_17_748_01.jpg","Cena":7499.00,"Opis":"ZenBook Pro 15 został zaprojektowany z myślą o zapewnieniu wysokiej mocy i produktywności, dlatego idealnie pomoże Ci w tworzeniu treści – w każdym miejscu i czasie."};
 localStorage.setItem("Produkt"+AsusZenBookPro15.Id,JSON.stringify(AsusZenBookPro15));
 
 const Teddybear = {"Id":1,"category_id":2,"Nazwa":"Miś maskotka","url":"https://img.smyk.com/1920x/filters:no_upscale()/https://beta-cdn.smyk.com/media/product/1600/1/teddykompaniet-love-maskotka-mis-szary-20-cm-6661958.jpg","Cena":25.99,"Opis":"Mięciutki miś idealnie nadaje się do zabawy oraz do przytulenia podczas snu. Przeznaczony dla dzieci 0+.",};
