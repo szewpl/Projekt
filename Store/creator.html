@@ -1,36 +1,119 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sklep z zabawkami</title>
     <style>
-        body{
+        body {
             background-color: #303030;
+            height: 100vh;
+        }
+        
+        #container {
+            height: 100vh;
+        }
+        
+        #addselect {
+            width: 50%;
+            margin: 5px;
+            color: #fff;
+            background-color: transparent;
+            border-radius: 5px;
+            border: 1px solid #ff3333;
+            height: 10%;
+            font-size: 30px;
+        }
+        
+        input {
+            background: transparent;
+            border: 1px solid #ff3333;
+            border-radius: 5px;
+            width: 50%;
+            margin: 5px;
+            color: #fff;
+            height: 10%;
+            font-size: 20px;
+        }
+        
+        textarea {
+            width: 50%;
+            background: transparent;
+            border: 1px solid #ff3333;
+            border-radius: 5px;
+            margin: 5px;
+            color: #fff;
+            height: 10%;
+        }
+        
+        #addproduct {
+            height: 80vh;
+            text-align: center;
+        }
+        
+        #addproducts {
+            height: 80vh;
+        }
+        
+        #addtechnic {
+            background: transparent;
+            border: 1px solid #ff3333;
+            border-radius: 5px;
+            margin: 5px;
+            color: #fff;
+            width: 25%;
+            height: 5%;
+            cursor: pointer;
+        }
+        
+        #addtechnic:hover {
+            color: #ff3333;
+        }
+        
+        #addprod {
+            background: transparent;
+            border: 1px solid #ff3333;
+            border-radius: 5px;
+            margin: 5px;
+            color: #fff;
+            width: 25%;
+            height: 5%;
+            cursor: pointer;
+        }
+        
+        #addprod:hover {
+            color: #ff3333;
+        }
+        
+        h3 {
+            color: #fff;
         }
     </style>
 </head>
+
 <body>
     <div id="container">
         <div id="menu">
-            <div id="logo" onselectstart = "return false;"></div>
-            <div id="specialoffers" onselectstart = "return false;"></div>
-            <div id="useraccount" onselectstart = "return false;"></div>
+            <div id="logo" onselectstart="return false;"></div>
+            <div id="specialoffers" onselectstart="return false;"></div>
+            <div id="useraccount" onselectstart="return false;"></div>
         </div>
         <div id="main">
             <div id="products"></div>
             <div id="categories"></div>
         </div>
-        <h3>Tworzenie produktu</h3>
+
         <div id="mainadd" style="display: flex;">
             <div id="addproduct">
+                <h3>Tworzenie produktu</h3>
                 <div id="addproducts">
                     <select id="addselect"></select><br>
-                    <input type="text" placeholder="Nazwa produktu" id="name"><br>
-                    <input type="url" placeholder="Wpisz adres URL zdjecia" id="url"><br>
-                    <input type="number" min="0" id="price" placeholder="Wpisz cene produktu"><br>
-                    <textarea id="textarea" rows="2" cols="50" style="resize: none;" placeholder="Wpisz krótki opis"></textarea><br>
+                    <input type="url" placeholder="Wpisz adres URL" id="url"><br>
+                    <input type="number" min="0" id="price"><br>
+                    <textarea id="textarea" rows="2" cols="50" style="resize: none;"></textarea><br>
+                    <button id="addtechnic" onclick="addinputs()">Dodaj dane techniczne</button><br>
                 </div>
                 <button id="addprod">Dodaj</button>
             </div>
@@ -41,9 +124,5 @@
 <script src="categories.js"></script>
 <script src="products.js"></script>
 <script src="dprod.js"></script>
-<script>
-    if(localStorage.getItem("product_id") <6 || localStorage.getItem("product_id")==null){
-        localStorage.setItem("product_id",6);
-    }    
-</script>
+
 </html>
