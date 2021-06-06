@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sklep z zabawkami</title>
+</head>
+<body>
+    <div id="container">
+        <div id="menu">
+            <div id="logo" onselectstart = "return false;"></div>
+            <div id="specialoffers" onselectstart = "return false;"></div>
+            <div id="useraccount" onselectstart = "return false;"></div>
+        </div>
+        <div id="main" style="display: flex;">
+            <div style="width: 80%;" id="products">
+            </div>
+            <div id="categories"></div>
+        </div>
+    </div>
+</body>
+<script src="config.js"></script>
+<script src="categories.js"></script>
+<script src="products.js"></script>
+<script>
+    if(localStorage.getItem("product_id") <6 || localStorage.getItem("product_id")==null){
+        localStorage.setItem("product_id",6);
+    }
+    display_categories();
+    window.GetQueryString = function(q) {
+    var vars = [], hash;
+            var hashes = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
+            for(var i = 0; i < hashes.length; i++)
+            {
+                hash = hashes[i].split('=');
+                vars[hash[0]] = hash[1];
+            }
+            return vars;
+    };
+
+
+    var p = document.getElementById("products");
+    for(let i = 0;i<parseInt(localStorage.getItem("product_id"));i++){
+            let pr = JSON.parse(localStorage.getItem("Produkt"+i));
+            if(Categories[parseInt(GetQueryString().categoryid)].id == pr.category_id)
+            {
+                var img = document.createElement("img");
+                var divogl = document.createElement("div");
+                var nameimg = document.createElement("h3"); 
+                var div = document.createElement("div");
+                var a = document.createElement("a");
+                var obj = JSON.parse(localStorage.getItem("Produkt"+i));
+
+                let l = obj.Cena;
+                a.innerHTML = obj.Opis + "<br>" + parseFloat(l).toFixed(2);
+                div.style.float = "right";
+                div.setAttribute('style',"margin-left:auto;margin-right:auto;");
+                nameimg.innerHTML = obj.Nazwa;
+                img.src = obj.url;
+                img.style.width = "300px";
+                img.style.height = "300px";
+
+                
+                div.appendChild(a);
+                divogl.appendChild(nameimg);
+                divogl.appendChild(img);
+                divogl.appendChild(div);
+                p.appendChild(divogl);
+        }
+    }
+</script>
+</html>

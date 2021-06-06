@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sklep z zabawkami</title>
+</head>
+<body>
+    <div id="container">
+        <div id="menu">
+            <div id="logo" onselectstart = "return false;"></div>
+            <div id="specialoffers" onselectstart = "return false;"></div>
+            <div id="useraccount" onselectstart = "return false;"></div>
+        </div>
+        <div id="mainadd" style="display: flex;">
+            <div id="prod" style="width: 300px;height: 300px;">
+                <img id="img">
+            </div>
+            <div id="nagl" style="width: 100%;">
+                <h3 id="h3"></h3>
+                <a id="opis"></a><br>
+                <a id="cat">Kategoria: </a><br>
+                <b id="price"></b>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="config.js"></script>
+<script src="categories.js"></script>
+<script src="products.js"></script>
+<script>
+    if(localStorage.getItem("product_id") <6 || localStorage.getItem("product_id")==null){
+        localStorage.setItem("product_id",6);
+    }
+
+    var p = document.getElementById("prod");
+    var img = document.getElementById("img");
+    var nagl = document.getElementById("h3");
+    var desc = document.getElementById("opis");
+    var price = document.getElementById("price");
+    var cat = document.getElementById("cat");
+    var obj = JSON.parse(localStorage.getItem("Produkt"+parseInt((localStorage.getItem("product_id"))-1)));
+
+    cat.innerHTML += Categories[parseInt(obj.category_id)-1].name;
+    price.innerHTML = obj.Cena + " zł";
+    opis.innerHTML = obj.Opis;
+    nagl.innerHTML = obj.Nazwa;
+    img.src = obj.url;
+    img.setAttribute('style',"width:300px;height:300px;");
+
+</script>
+</html>

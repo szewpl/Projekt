@@ -9,13 +9,17 @@ const Categories = [
     {id:8,parent_id:5,name:"Laptopy"},
 ];
 
-
 function display_categories(){
     for(let i=0;i<Categories.length;i++)
     {
         var div = document.getElementById("categories");
         var a = document.createElement("a");
         a.innerHTML = Categories[i].name + "<br>";
+        if(Categories[i].parent_id != 0)
+        {
+            a.addEventListener("click",()=>{window.location.href = "prodcat.html?categoryid="+parseInt(Categories[i].id-1);});
+            a.style.cursor = "pointer";
+        }
         div.appendChild(a);
         if(Categories[i].parent_id > 0 && Categories[i].parent_id != 10)
         {
