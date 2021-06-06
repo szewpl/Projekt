@@ -22,7 +22,7 @@ var Products = [AsusZenBookPro15,Teddybear,CityLineNewYorkCity,LegoWalkawKresie,
 
 class createProduct{
     savels(){
-        var prod={"Id":parseInt(localStorage.getItem("product_id")),"category_id":select.value,"url":zdj.value,"Cena":price.value,"Opis":textarea.value,"Nazwa":nameprod.value};
+        var prod={"Id":parseInt(localStorage.getItem("product_id")),"category_id":parseInt(select.value),"url":zdj.value,"Cena":parseFloat(price.value),"Opis":textarea.value,"Nazwa":nameprod.value};
     
         localStorage.setItem("Produkt"+parseInt(localStorage.getItem("product_id")),JSON.stringify(prod));
         localStorage.setItem("product_id",parseInt(localStorage.getItem("product_id"))+1);
@@ -39,7 +39,7 @@ function display_products(){
         var div = document.createElement("div");
         var a = document.createElement("a");
         var obj = JSON.parse(localStorage.getItem("Produkt"+i));
-
+        
         let l = obj.Cena;
         a.innerHTML = obj.Opis + "<br>" + parseFloat(l).toFixed(2);
         div.style.float = "right";
@@ -48,12 +48,135 @@ function display_products(){
         img.src = obj.url;
         img.style.width = "300px";
         img.style.height = "300px";
+        nameimg.setAttribute("style","width:100%;height:30%;text-align:center;");
+        a.setAttribute("style","width:100%;height:70%;");
+        divogl.style.display = "flex";
+        divogl.addEventListener("click",()=>{window.location.href = "clickprod.html?produkt=" + JSON.parse(localStorage.getItem("Produkt"+i)).Id;});
 
+
+        div.appendChild(nameimg);
         div.appendChild(a);
-        divogl.appendChild(nameimg);
         divogl.appendChild(img);
         divogl.appendChild(div);
         p.appendChild(divogl);
+    }
+}
+
+function wybor(){
+    var pr = document.getElementById("sel").value;
+    if(pr==0){
+        var p = document.getElementById("products");
+        p.innerHTML = "";
+        var tab = new Array;
+        for(let i =0; i<localStorage.getItem("product_id");i++){
+            tab[i] = JSON.parse(localStorage.getItem("Produkt"+i));
+        }
+        var cenanajnizsza = _.sortBy(tab,"Cena");
+        for(let i = 0;i<cenanajnizsza.length;i++){
+            var img = document.createElement("img");
+            var nameimg = document.createElement("h3");
+            var divogl = document.createElement("div"); 
+            var div = document.createElement("div");
+            var a = document.createElement("a");
+            var obj = cenanajnizsza[i];
+            
+            let l = obj.Cena;
+            a.innerHTML = obj.Opis + "<br>" + parseFloat(l).toFixed(2);
+            div.style.float = "right";
+            div.setAttribute('style',"margin-left:auto;margin-right:auto;");
+            nameimg.innerHTML = obj.Nazwa;
+            img.src = obj.url;
+            img.style.width = "300px";
+            img.style.height = "300px";
+            divogl.addEventListener("click",()=>{window.location.href = "clickprod.html?produkt=" + cenanajnizsza[i].Id;});
+
+            div.appendChild(a);
+            divogl.appendChild(nameimg);
+            divogl.appendChild(img);
+            divogl.appendChild(div);
+            p.appendChild(divogl);
+        }
+    }
+    if(pr==1){
+        var p = document.getElementById("products");
+        p.innerHTML = "";
+        var tab = new Array;
+        var j =parseInt(localStorage.getItem("product_id"))-1;
+        for(let i =0; i<localStorage.getItem("product_id");i++){
+            tab[i] = JSON.parse(localStorage.getItem("Produkt"+i));
+        }
+        var cenanajnizsza = _.sortBy(tab,"Cena");
+        for(let i =0; i<localStorage.getItem("product_id");i++,j--){
+            tab[i] = cenanajnizsza[j];
+        }
+        for(let i = 0;i<tab.length;i++){
+            var img = document.createElement("img");
+            var nameimg = document.createElement("h3");
+            var divogl = document.createElement("div"); 
+            var div = document.createElement("div");
+            var a = document.createElement("a");
+            console.log(tab);
+            var obj = tab[i];
+            
+            let l = obj.Cena;
+            a.innerHTML = obj.Opis + "<br>" + parseFloat(l).toFixed(2);
+            div.style.float = "right";
+            div.setAttribute('style',"margin-left:auto;margin-right:auto;");
+            nameimg.innerHTML = obj.Nazwa;
+            img.src = obj.url;
+            img.style.width = "300px";
+            img.style.height = "300px";
+            divogl.addEventListener("click",()=>{window.location.href = "clickprod.html?produkt=" + tab[i].Id;});
+
+            div.appendChild(a);
+            divogl.appendChild(nameimg);
+            divogl.appendChild(img);
+            divogl.appendChild(div);
+            p.appendChild(divogl);
+        }
+    }
+}
+
+var tab = new Array;
+for(let i =0; i<localStorage.getItem("product_id");i++){
+    tab[i] = JSON.parse(localStorage.getItem("Produkt"+i)).Nazwa;
+}
+
+function search(){
+    var val = searchinput.value.toLocaleLowerCase();
+    let r = tab;
+    r = r.filter(tab => tab.toLocaleLowerCase().includes(val));
+    var p = document.getElementById("products");
+    p.innerHTML = "";
+    for(let i = 0;i<parseInt(localStorage.getItem("product_id"));i++){
+        for(let j=0;j<r.length;j++)
+        {
+            if(r[j] == JSON.parse(localStorage.getItem("Produkt"+i)).Nazwa){
+                var img = document.createElement("img");
+                var nameimg = document.createElement("h3");
+                var divogl = document.createElement("div"); 
+                var div = document.createElement("div");
+                var a = document.createElement("a");
+                var obj = JSON.parse(localStorage.getItem("Produkt"+i));
+                
+                let l = obj.Cena;
+                a.innerHTML = obj.Opis + "<br>" + parseFloat(l).toFixed(2);
+                div.style.float = "right";
+                div.setAttribute('style',"margin-left:auto;margin-right:auto;");
+                nameimg.innerHTML = obj.Nazwa;
+                img.src = obj.url;
+                img.style.width = "300px";
+                img.style.height = "300px";
+                divogl.addEventListener("click",()=>{window.location.href = "clickprod.html?produkt=" + JSON.parse(localStorage.getItem("Produkt"+i)).Id;});
+
+                div.appendChild(a);
+                divogl.appendChild(nameimg);
+                divogl.appendChild(img);
+                divogl.appendChild(div);
+                p.appendChild(divogl);
+            }
+        }
+        
     }
 }
 

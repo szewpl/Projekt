@@ -13,10 +13,19 @@
             <div id="specialoffers" onselectstart = "return false;"></div>
             <div id="useraccount" onselectstart = "return false;"></div>
         </div>
+
         <div id="main" style="display: flex;">
-            <div style="width: 80%;" id="products">
+            <div style="width: 40%;">
+                <img id="img" style="width: 100%;">
             </div>
-            <div id="categories"></div>
+            <div style="width: 60%;height: 100%;text-align: center;">
+                <h3 id="header" style="width: 100%;height: 30%;"></h3>
+                <a id="da" style="width: 100%;height: 50%;"></a>
+                <div id="priceandbasket" style="width: 100%;height: 30%;">
+                    <a id="price"></a>
+                    <button>Dodaj do koszyka</button>
+                </div>
+            </div>
         </div>
     </div>
 </body>
@@ -27,7 +36,23 @@
     if(localStorage.getItem("product_id") <6 || localStorage.getItem("product_id")==null){
         localStorage.setItem("product_id",6);
     }
-    display_categories();
-    display_products();
+
+    function GetQueryString(q) {
+        var vars = [], hash;
+        var hashes = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
+        for(var i = 0; i < hashes.length; i++)
+        {
+            hash = hashes[i].split('=');
+            vars[hash[0]] = hash[1];
+        }
+        return vars;
+    };
+    
+
+    var obj = JSON.parse(localStorage.getItem("Produkt"+GetQueryString().produkt));
+    document.getElementById("header").innerHTML=obj.Nazwa;
+    document.getElementById("da").innerHTML=obj.Opis;
+    document.getElementById("price").innerHTML=parseFloat(obj.Cena).toFixed(2);
+    document.getElementById("img").src=obj.url;
 </script>
 </html>
