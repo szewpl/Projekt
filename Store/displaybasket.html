@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sklep z zabawkami</title>
+</head>
+<body>
+    <div id="container">
+        <div id="menu">
+            <div id="logo" onselectstart = "return false;"></div>
+            <div id="specialoffers" onselectstart = "return false;"></div>
+            <div id="useraccount" onselectstart = "return false;"></div>
+        </div>    
+        <div id="main" style="display: flex;">
+            <div id="prodinbasket">
+            </div>
+        </div>
+    </div>
+</body>
+<script src="config.js"></script>
+<script src="categories.js"></script>
+<script src="products.js"></script>
+<script>
+    if(localStorage.getItem("product_id") <6 || localStorage.getItem("product_id")==null){
+        localStorage.setItem("product_id",6);
+    }
+
+    for(let i=0;i<localStorage.getItem("product_id");i++){
+        var obj = JSON.parse(localStorage.getItem("koszykProdukt"+i));
+        if(obj.ilosc > 0)
+        {
+            var ogl = document.getElementById("prodinbasket");
+            var div = document.createElement("div");
+            var img = document.createElement("img");
+            var ilosc=  document.createElement("h3");
+            var namep = document.createElement("h3");
+
+            img.src = obj.url;
+            img.setAttribute("style","width:100px;height:100px;border-right:2px solid black;");
+            namep.innerHTML = "\xa0"+obj.Nazwa + "\xa0";
+            namep.setAttribute("style","border-right:2px solid black;margin:0px;line-height:100px;");
+            ilosc.innerHTML = '\xa0' + "Ilość: " + obj.ilosc;
+            ilosc.setAttribute("style","margin:0px;line-height:100px;");
+            div.setAttribute("style","display:flex;margin-bottom:10px;");
+
+            div.appendChild(img);
+            div.appendChild(namep);
+            div.appendChild(ilosc);
+            ogl.appendChild(div);
+        }
+    }
+
+</script>
+</html>

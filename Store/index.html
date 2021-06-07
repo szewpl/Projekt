@@ -15,9 +15,7 @@
         </div>
 
         <div id="wysz" style="display: flex;">
-            </select>
             <input id="wyszukiwarka" type="text" placeholder="Wyszukiwarka">
-            <div id="basket">Koszyk</div>
         </div>
         
         <div id="main" style="display: flex;">
@@ -37,5 +35,13 @@
     }
     display_categories();
     display_products();
+    for(let i =0;i<localStorage.getItem("product_id");i++){
+        if(localStorage.getItem("koszykProdukt"+i) == null)
+        {
+            var obj = JSON.parse(localStorage.getItem("Produkt"+i));
+            obj["ilosc"] = 0;
+            localStorage.setItem("koszykProdukt"+i,JSON.stringify(obj));
+        }
+    }
 </script>
 </html>

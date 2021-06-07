@@ -15,9 +15,7 @@
         </div>
 
         <div id="wysz" style="display: flex;">
-        </select>
-        <input id="wyszukiwarka" type="text" placeholder="Wyszukiwarka">
-        <div id="basket">Koszyk</div>
+            <input id="wyszukiwarka" type="text" placeholder="Wyszukiwarka">
         </div>
 
         <div id="main" style="display: flex;">
@@ -30,6 +28,7 @@
 <script src="config.js"></script>
 <script src="categories.js"></script>
 <script src="products.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/underscore@1.13.1/underscore-umd-min.js"></script>
 <script>
     if(localStorage.getItem("product_id") <6 || localStorage.getItem("product_id")==null){
         localStorage.setItem("product_id",6);
@@ -53,30 +52,38 @@
             if(Categories[parseInt(GetQueryString().categoryid)].id == pr.category_id)
             {
                 var img = document.createElement("img");
-                var divogl = document.createElement("div");
-                var nameimg = document.createElement("h3"); 
+                var nameimg = document.createElement("h3");
+                var divogl = document.createElement("div"); 
                 var div = document.createElement("div");
+                var bt = document.createElement("button");
                 var a = document.createElement("a");
                 var obj = JSON.parse(localStorage.getItem("Produkt"+i));
-
+                
+                bt.innerHTML = "Dodaj do koszyka";
+                bt.setAttribute("style","width:100px;height:50px;");
+                bt.addEventListener("click",()=>{addingtobasket(JSON.parse(localStorage.getItem("koszykProdukt"+i)));});
                 let l = obj.Cena;
-                a.innerHTML = obj.Opis + "<br>" + parseFloat(l).toFixed(2);
+                a.innerHTML = obj.Opis + "<br>" + parseFloat(l).toFixed(2) + "<br>";
                 div.style.float = "right";
-                div.setAttribute('style',"margin-left:auto;margin-right:auto;");
                 nameimg.innerHTML = obj.Nazwa;
                 img.src = obj.url;
                 img.style.width = "300px";
                 img.style.height = "300px";
-                divogl.addEventListener("click",()=>{window.location.href = "clickprod.html?produkt=" + JSON.parse(localStorage.getItem("Produkt"+i)).Id;});
+                nameimg.setAttribute("style","width:100%;height:30%;");
+                a.setAttribute("style","width:100%;height:70%;");
+                divogl.style.display = "flex";
+                img.addEventListener("click",()=>{window.location.href = "clickprod.html?produkt=" + JSON.parse(localStorage.getItem("Produkt"+i)).Id;});
+                nameimg.addEventListener("click",()=>{window.location.href = "clickprod.html?produkt=" + JSON.parse(localStorage.getItem("Produkt"+i)).Id;});
+                a.addEventListener("click",()=>{window.location.href = "clickprod.html?produkt=" + JSON.parse(localStorage.getItem("Produkt"+i)).Id;});
 
                 
+                div.appendChild(nameimg);
                 div.appendChild(a);
-                divogl.appendChild(nameimg);
+                div.appendChild(bt);
                 divogl.appendChild(img);
                 divogl.appendChild(div);
                 p.appendChild(divogl);
         }
     }
 </script>
-
 </html>

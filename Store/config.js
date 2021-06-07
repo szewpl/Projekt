@@ -27,6 +27,14 @@ const select = {
 
 
 
+for(let i =0;i<localStorage.getItem("product_id");i++){
+    if(localStorage.getItem("koszykProdukt"+i) == null)
+    {
+        var obj = JSON.parse(localStorage.getItem("Produkt"+i));
+        obj["ilosc"] = 0;
+        localStorage.setItem("koszykProdukt"+i,JSON.stringify(obj));
+    }
+}
 
 
 
@@ -59,9 +67,10 @@ if(wysz){
             var option = document.createElement("option");
             option.text = select[i].name;
             option.value = select[i].id;
+            
             sel.add(option);
     }
-    sel.addEventListener("change",()=>{wybor();});
+    sel.addEventListener("click",()=>{wybor();});
     wysz.appendChild(sel);
 }
 
@@ -69,4 +78,28 @@ if(wysz){
 var searchinput = document.getElementById("wyszukiwarka");
 if(searchinput){
     searchinput.addEventListener("input",()=>{search();});
+}
+
+if(localStorage.getItem("ilosczkoszyka")==null){
+    localStorage.setItem("ilosczkoszyka",0);
+}
+
+var divbasket = document.createElement("div");
+
+function addingtobasket(obj){
+    localStorage.setItem("ilosczkoszyka",(parseInt(localStorage.getItem("ilosczkoszyka")))+1);
+    obj["ilosc"] = obj["ilosc"] +1;
+    localStorage.setItem("koszykProdukt"+obj.Id,JSON.stringify(obj)); 
+    
+    divbasket.innerHTML = "Koszyk: " + localStorage.getItem("ilosczkoszyka");
+    if(wysz){
+    wysz.appendChild(divbasket);
+    }
+}
+
+divbasket.addEventListener("click",()=>{window.location.href = "displaybasket.html";});
+divbasket.innerHTML = "Koszyk: " + localStorage.getItem("ilosczkoszyka");
+
+if(wysz){
+    wysz.appendChild(divbasket);
 }

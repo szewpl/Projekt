@@ -37,25 +37,31 @@ function display_products(){
         var nameimg = document.createElement("h3");
         var divogl = document.createElement("div"); 
         var div = document.createElement("div");
+        var bt = document.createElement("button");
         var a = document.createElement("a");
         var obj = JSON.parse(localStorage.getItem("Produkt"+i));
         
+        bt.innerHTML = "Dodaj do koszyka";
+        bt.setAttribute("style","width:100px;height:50px;");
+        bt.addEventListener("click",()=>{addingtobasket(JSON.parse(localStorage.getItem("koszykProdukt"+i)));});
         let l = obj.Cena;
-        a.innerHTML = obj.Opis + "<br>" + parseFloat(l).toFixed(2);
+        a.innerHTML = obj.Opis + "<br>" + parseFloat(l).toFixed(2) + "<br>";
         div.style.float = "right";
-        div.setAttribute('style',"margin-left:auto;margin-right:auto;");
         nameimg.innerHTML = obj.Nazwa;
         img.src = obj.url;
         img.style.width = "300px";
         img.style.height = "300px";
-        nameimg.setAttribute("style","width:100%;height:30%;text-align:center;");
+        nameimg.setAttribute("style","width:100%;height:30%;");
         a.setAttribute("style","width:100%;height:70%;");
         divogl.style.display = "flex";
-        divogl.addEventListener("click",()=>{window.location.href = "clickprod.html?produkt=" + JSON.parse(localStorage.getItem("Produkt"+i)).Id;});
+        img.addEventListener("click",()=>{window.location.href = "clickprod.html?produkt=" + JSON.parse(localStorage.getItem("Produkt"+i)).Id;});
+        nameimg.addEventListener("click",()=>{window.location.href = "clickprod.html?produkt=" + JSON.parse(localStorage.getItem("Produkt"+i)).Id;});
+        a.addEventListener("click",()=>{window.location.href = "clickprod.html?produkt=" + JSON.parse(localStorage.getItem("Produkt"+i)).Id;});
 
-
+        
         div.appendChild(nameimg);
         div.appendChild(a);
+        div.appendChild(bt);
         divogl.appendChild(img);
         divogl.appendChild(div);
         p.appendChild(divogl);
@@ -77,21 +83,31 @@ function wybor(){
             var nameimg = document.createElement("h3");
             var divogl = document.createElement("div"); 
             var div = document.createElement("div");
+            var bt = document.createElement("button");
             var a = document.createElement("a");
             var obj = cenanajnizsza[i];
             
+            bt.innerHTML = "Dodaj do koszyka";
+            bt.setAttribute("style","width:100px;height:50px;");
+            bt.addEventListener("click",()=>{addingtobasket(JSON.parse(localStorage.getItem("koszykProdukt"+cenanajnizsza[i].Id)));});
             let l = obj.Cena;
-            a.innerHTML = obj.Opis + "<br>" + parseFloat(l).toFixed(2);
+            a.innerHTML = obj.Opis + "<br>" + parseFloat(l).toFixed(2) + "<br>";
             div.style.float = "right";
-            div.setAttribute('style',"margin-left:auto;margin-right:auto;");
             nameimg.innerHTML = obj.Nazwa;
             img.src = obj.url;
             img.style.width = "300px";
             img.style.height = "300px";
-            divogl.addEventListener("click",()=>{window.location.href = "clickprod.html?produkt=" + cenanajnizsza[i].Id;});
+            nameimg.setAttribute("style","width:100%;height:30%;");
+            a.setAttribute("style","width:100%;height:70%;");
+            divogl.style.display = "flex";
+            img.addEventListener("click",()=>{window.location.href = "clickprod.html?produkt=" + cenanajnizsza[i].Id;});
+            nameimg.addEventListener("click",()=>{window.location.href = "clickprod.html?produkt=" + cenanajnizsza[i].Id;});
+            a.addEventListener("click",()=>{window.location.href = "clickprod.html?produkt=" + cenanajnizsza[i].Id;});
 
+            
+            div.appendChild(nameimg);
             div.appendChild(a);
-            divogl.appendChild(nameimg);
+            div.appendChild(bt);
             divogl.appendChild(img);
             divogl.appendChild(div);
             p.appendChild(divogl);
@@ -114,22 +130,31 @@ function wybor(){
             var nameimg = document.createElement("h3");
             var divogl = document.createElement("div"); 
             var div = document.createElement("div");
+            var bt = document.createElement("button");
             var a = document.createElement("a");
-            console.log(tab);
             var obj = tab[i];
             
+            bt.innerHTML = "Dodaj do koszyka";
+            bt.setAttribute("style","width:100px;height:50px;");
+            bt.addEventListener("click",()=>{addingtobasket(JSON.parse(localStorage.getItem("koszykProdukt"+tab[i].Id)));});
             let l = obj.Cena;
-            a.innerHTML = obj.Opis + "<br>" + parseFloat(l).toFixed(2);
+            a.innerHTML = obj.Opis + "<br>" + parseFloat(l).toFixed(2) + "<br>";
             div.style.float = "right";
-            div.setAttribute('style',"margin-left:auto;margin-right:auto;");
             nameimg.innerHTML = obj.Nazwa;
             img.src = obj.url;
             img.style.width = "300px";
             img.style.height = "300px";
-            divogl.addEventListener("click",()=>{window.location.href = "clickprod.html?produkt=" + tab[i].Id;});
+            nameimg.setAttribute("style","width:100%;height:30%;");
+            a.setAttribute("style","width:100%;height:70%;");
+            divogl.style.display = "flex";
+            img.addEventListener("click",()=>{window.location.href = "clickprod.html?produkt=" + tab[i].Id;});
+            nameimg.addEventListener("click",()=>{window.location.href = "clickprod.html?produkt=" + tab[i].Id;});
+            a.addEventListener("click",()=>{window.location.href = "clickprod.html?produkt=" + tab[i].Id;});
 
+            
+            div.appendChild(nameimg);
             div.appendChild(a);
-            divogl.appendChild(nameimg);
+            div.appendChild(bt);
             divogl.appendChild(img);
             divogl.appendChild(div);
             p.appendChild(divogl);
@@ -156,21 +181,31 @@ function search(){
                 var nameimg = document.createElement("h3");
                 var divogl = document.createElement("div"); 
                 var div = document.createElement("div");
+                var bt = document.createElement("button");
                 var a = document.createElement("a");
                 var obj = JSON.parse(localStorage.getItem("Produkt"+i));
                 
+                bt.innerHTML = "Dodaj do koszyka";
+                bt.setAttribute("style","width:100px;height:50px;");
+                bt.addEventListener("click",()=>{addingtobasket(JSON.parse(localStorage.getItem("koszykProdukt"+i)));});
                 let l = obj.Cena;
-                a.innerHTML = obj.Opis + "<br>" + parseFloat(l).toFixed(2);
+                a.innerHTML = obj.Opis + "<br>" + parseFloat(l).toFixed(2) + "<br>";
                 div.style.float = "right";
-                div.setAttribute('style',"margin-left:auto;margin-right:auto;");
                 nameimg.innerHTML = obj.Nazwa;
                 img.src = obj.url;
                 img.style.width = "300px";
                 img.style.height = "300px";
-                divogl.addEventListener("click",()=>{window.location.href = "clickprod.html?produkt=" + JSON.parse(localStorage.getItem("Produkt"+i)).Id;});
+                nameimg.setAttribute("style","width:100%;height:30%;");
+                a.setAttribute("style","width:100%;height:70%;");
+                divogl.style.display = "flex";
+                img.addEventListener("click",()=>{window.location.href = "clickprod.html?produkt=" + JSON.parse(localStorage.getItem("Produkt"+i)).Id;});
+                nameimg.addEventListener("click",()=>{window.location.href = "clickprod.html?produkt=" + JSON.parse(localStorage.getItem("Produkt"+i)).Id;});
+                a.addEventListener("click",()=>{window.location.href = "clickprod.html?produkt=" + JSON.parse(localStorage.getItem("Produkt"+i)).Id;});
 
+                
+                div.appendChild(nameimg);
                 div.appendChild(a);
-                divogl.appendChild(nameimg);
+                div.appendChild(bt);
                 divogl.appendChild(img);
                 divogl.appendChild(div);
                 p.appendChild(divogl);
