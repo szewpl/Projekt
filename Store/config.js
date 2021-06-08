@@ -37,27 +37,9 @@ for(let i =0;i<localStorage.getItem("product_id");i++){
     }
 }
 
-/*if(localStorage.getItem("konto") == null){
+if(localStorage.getItem("konto") == null){
     localStorage.setItem("konto",0);
-}*/
-
-console.log(document.cookie);
-
-/*function getCookie(cname) {
-    var name = cname + "=";
-    var decodedCookie = decodeURIComponent(document.cookie);
-    var ca = decodedCookie.split(';');
-    for(var i = 0; i <ca.length; i++) {
-      var c = ca[i];
-      while (c.charAt(0) == ' ') {
-        c = c.substring(1);
-      }
-      if (c.indexOf(name) == 0) {
-        return c.substring(name.length, c.length);
-      }
-    }
-    return "";
-  }*/
+}
 
 
 //document.querySelector("body").style.backgroundColor = "#303030";
