@@ -37,13 +37,13 @@ for(let i =0;i<localStorage.getItem("product_id");i++){
     }
 }
 
-if(localStorage.getItem("konto") == null){
+/*if(localStorage.getItem("konto") == null){
     localStorage.setItem("konto",0);
-}
+}*/
 
 console.log(document.cookie);
 
-function getCookie(cname) {
+/*function getCookie(cname) {
     var name = cname + "=";
     var decodedCookie = decodeURIComponent(document.cookie);
     var ca = decodedCookie.split(';');
@@ -57,7 +57,7 @@ function getCookie(cname) {
       }
     }
     return "";
-  }
+  }*/
 
 
 //document.querySelector("body").style.backgroundColor = "#303030";
