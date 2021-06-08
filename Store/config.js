@@ -37,6 +37,7 @@ for(let i =0;i<localStorage.getItem("product_id");i++){
     }
 }
 
+console.log(document.cookie);
 
 
 //document.querySelector("body").style.backgroundColor = "#303030";
