@@ -88,6 +88,7 @@
     var con = document.getElementById("confirmpassword");
     var a = document.getElementById("sprawdzanie");
 
+    
     con.addEventListener("input",()=>{
         if(con.value == passsword.value){
             if(con.value == ""){
@@ -117,14 +118,16 @@
     });
 
     function check(){
+        var login = document.getElementById('login');
+        var passsword = document.getElementById('password');
         if(login.value != "" && con.value == passsword.value && con.value !="" && passsword.value != "")
         {
-            var login = document.getElementById('login').value;
-            var passsword = document.getElementById('password').value;
-            var obj = {login:passsword};
-            localStorage.setItem("Uzytkownik"+localStorage.getItem(konto),JSON.stringify(obj));
-            localStorage.setItem("konto",(localStorage.getItem("konto")+1));
+            var obj = {};
+            obj[login.value] = passsword.value;
+            localStorage.setItem("Uzytkownik"+localStorage.getItem("konto"),JSON.stringify(obj));
+            localStorage.setItem("konto",(parseInt(localStorage.getItem("konto"))+1));
             sessionStorage.setItem("zalogowanyjako",login.value);
+            window.location.href = "index.html";
         }else{
             alert("Nie poprawne dane");
         }

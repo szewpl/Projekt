@@ -9,6 +9,7 @@ var zdj = document.getElementById("url");
 var price = document.getElementById("price");
 var textarea = document.getElementById("textarea");
 var nameprod = document.getElementById("name");
+var s = document.querySelector("#selos");
 
 for(let i=0;i<Categories.length;i++)
 {

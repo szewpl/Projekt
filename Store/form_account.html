@@ -58,6 +58,7 @@
         <div id="logowanie">
             <lable>Login: </lable><br><input type="text" id="login"><br>
             <lable>Hasło: </lable><br><input type="password" id="password"><br><br>
+            <a id="result"></a>
             <a id="rej">Zarejestruj sie</a><br><br>
             <input type="submit" id="submit" value="Zaloguj się" onclick="check();">
         </div>
@@ -79,6 +80,20 @@
         {
             window.location.href = "creator.html";
             sessionStorage.setItem("zalogowanyjako","admin");
+        }
+
+        if(login != "" && passsword != 0){
+            for(let i =0 ;i<localStorage.getItem("konto");i++){
+                var obj = JSON.parse(localStorage.getItem("Uzytkownik"+i));
+                if(login == Object.keys(obj) && passsword == obj[Object.keys(obj)]){
+                    document.getElementById("result").innerHTML = "";
+                    sessionStorage.setItem("zalogowanyjako",Object.keys(obj));
+                    window.location.href = "index.html";
+                    break;
+                }else{
+                    document.getElementById("result").innerHTML = "Takie konto nie istnieje<br>";
+                }
+            }
         }
     }
 </script>

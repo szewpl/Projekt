@@ -26,6 +26,10 @@
                     <input type="url" placeholder="Wpisz adres URL zdjecia" id="url"><br>
                     <input type="number" min="0" id="price" placeholder="Wpisz cene produktu"><br>
                     <textarea id="textarea" rows="2" cols="50" style="resize: none;" placeholder="Wpisz krótki opis"></textarea><br>
+                    <label>Czy to oferta specjalna</label><select id="selos">
+                        <option value="true">Tak</option>
+                        <option value="false">Nie</option>
+                    </select>
                 </div>
                 <button id="addprod">Dodaj</button>
             </div>
@@ -39,6 +43,6 @@
 <script>
     if(localStorage.getItem("product_id") <6 || localStorage.getItem("product_id")==null){
         localStorage.setItem("product_id",6);
-    }    
+    }
 </script>
 </html>

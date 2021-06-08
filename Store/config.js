@@ -43,11 +43,11 @@ if(localStorage.getItem("konto") == null){
 
 
 //document.querySelector("body").style.backgroundColor = "#303030";
-document.getElementById('useraccount').addEventListener('click',()=>{window.location.href = "form_account.html";});
 let menu = document.getElementById("menu");
 let logo = document.getElementById("logo");
 let specialoffers = document.getElementById("specialoffers");
 let useraccount = document.getElementById("useraccount");
+specialoffers.addEventListener("click",()=>{window.location.href = "ofertyspecjalne.html"});
 
 
 logo.innerHTML = Menu.logo.name;
@@ -65,7 +65,6 @@ var wysz = document.getElementById("wysz");
 var sel = document.createElement("select");
 if(wysz){
     sel.id = "sel";
-
     for(let i=0;i<2;i++)
     {
             var option = document.createElement("option");
@@ -77,6 +76,7 @@ if(wysz){
     sel.addEventListener("click",()=>{wybor();});
     wysz.appendChild(sel);
 }
+
 
 
 var searchinput = document.getElementById("wyszukiwarka");
@@ -131,4 +131,27 @@ divbasket.innerHTML = "Koszyk: " + localStorage.getItem("ilosczkoszyka");
 
 if(wysz){
     wysz.appendChild(divbasket);
+}
+
+if(sessionStorage.getItem("zalogowanyjako") != null){
+    useraccount.innerHTML = '\xa0 Witaj, '+sessionStorage.getItem("zalogowanyjako");
+    useraccount.addEventListener("click",()=>{
+    if(confirm("Czy chcesz sie wylogowac?")){
+        sessionStorage.removeItem("zalogowanyjako");
+        window.location.reload();
+    }
+});
+}else{
+    document.getElementById('useraccount').addEventListener('click',()=>{window.location.href = "form_account.html";});
+}
+
+if(sessionStorage.getItem("zalogowanyjako") == "admin"){
+    var bt = document.createElement("button");
+
+    bt.innerHTML= "Stworz produkt";
+    bt.addEventListener("click",()=>{window.location.href = "creator.html"});
+
+    if(wysz){
+        wysz.appendChild(bt);
+    }
 }
