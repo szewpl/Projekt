@@ -32,6 +32,7 @@ for(let i =0;i<localStorage.getItem("product_id");i++){
     {
         var obj = JSON.parse(localStorage.getItem("Produkt"+i));
         obj["ilosc"] = 0;
+        obj["Cena"] = 0;
         localStorage.setItem("koszykProdukt"+i,JSON.stringify(obj));
     }
 }
@@ -89,6 +90,31 @@ var divbasket = document.createElement("div");
 function addingtobasket(obj){
     localStorage.setItem("ilosczkoszyka",(parseInt(localStorage.getItem("ilosczkoszyka")))+1);
     obj["ilosc"] = obj["ilosc"] +1;
+    obj["Cena"] = obj["Cena"] + JSON.parse(localStorage.getItem("Produkt"+obj.Id)).Cena;
+    localStorage.setItem("koszykProdukt"+obj.Id,JSON.stringify(obj)); 
+    
+    divbasket.innerHTML = "Koszyk: " + localStorage.getItem("ilosczkoszyka");
+    if(wysz){
+    wysz.appendChild(divbasket);
+    }
+}
+
+function deletepr(obj){
+    localStorage.setItem("ilosczkoszyka",(parseInt(localStorage.getItem("ilosczkoszyka")))-1);
+    obj["ilosc"] = obj["ilosc"] -1;
+    obj["Cena"] = obj["Cena"] - JSON.parse(localStorage.getItem("Produkt"+obj.Id)).Cena;
+    localStorage.setItem("koszykProdukt"+obj.Id,JSON.stringify(obj)); 
+    
+    divbasket.innerHTML = "Koszyk: " + localStorage.getItem("ilosczkoszyka");
+    if(wysz){
+    wysz.appendChild(divbasket);
+    }
+}
+
+function deleteprallf(obj){
+    localStorage.setItem("ilosczkoszyka",(parseInt(localStorage.getItem("ilosczkoszyka")))-obj.ilosc);
+    obj["ilosc"] = obj["ilosc"] -obj.ilosc;
+    obj["Cena"] = 0;
     localStorage.setItem("koszykProdukt"+obj.Id,JSON.stringify(obj)); 
     
     divbasket.innerHTML = "Koszyk: " + localStorage.getItem("ilosczkoszyka");

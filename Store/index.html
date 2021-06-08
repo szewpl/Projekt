@@ -40,8 +40,10 @@
         {
             var obj = JSON.parse(localStorage.getItem("Produkt"+i));
             obj["ilosc"] = 0;
+            obj["Cena"] = 0;
             localStorage.setItem("koszykProdukt"+i,JSON.stringify(obj));
         }
     }
+    document.cookie = "name=siema";
 </script>
 </html>

@@ -35,19 +35,50 @@
             var div = document.createElement("div");
             var img = document.createElement("img");
             var ilosc=  document.createElement("h3");
+            var divbts = document.createElement("div");
+            var btplus = document.createElement("button");
+            var btminus = document.createElement("button");
+            var deleteprall = document.createElement("button");
+            var imgbt = document.createElement("img");
+            var h3price = document.createElement("h3");
+            var divbtdall = document.createElement("div");
             var namep = document.createElement("h3");
 
+            h3price.innerHTML = parseFloat(obj.Cena).toFixed(2);
+            h3price.setAttribute("style","line-height:100px;margin:0;margin-left:10px;");
+            divbtdall.setAttribute("style","border-right:2px solid black;");
+            imgbt.src = "https://image.flaticon.com/icons/png/512/1214/1214428.png";
+            imgbt.setAttribute("style","width:35px;height:35px;");
+            imgbt.draggable =false;
+            deleteprall.setAttribute("style","width:50px;height:50px;margin-top:25px;margin-left:10px;margin-right:10px;background-color:white;border:none;");
+            deleteprall.addEventListener("click",()=>{deleteprallf(JSON.parse(localStorage.getItem("koszykProdukt"+i)));window.location.reload();});
+            btplus.innerHTML = "+";
+            btplus.setAttribute("style","width:30px;height:30px;margin-top:35px;margin-right:10px;background-color:white;border-radius:5px;");
+            btplus.addEventListener("click",()=>{addingtobasket(JSON.parse(localStorage.getItem("koszykProdukt"+i)));window.location.reload();});
+            btminus.innerHTML = "-";
+            btminus.setAttribute("style","width:30px;height:30px;margin-top:35px;margin-right:10px;background-color:white;border-radius:5px;");
+            btminus.addEventListener("click",()=>{deletepr(JSON.parse(localStorage.getItem("koszykProdukt"+i)));window.location.reload();});
+            divbts.setAttribute("style","border-right: 2px solid black;");
+            img.addEventListener("click",()=>{window.location.href = "clickprod.html?produkt=" + i});
             img.src = obj.url;
             img.setAttribute("style","width:100px;height:100px;border-right:2px solid black;");
             namep.innerHTML = "\xa0"+obj.Nazwa + "\xa0";
             namep.setAttribute("style","border-right:2px solid black;margin:0px;line-height:100px;");
-            ilosc.innerHTML = '\xa0' + "Ilość: " + obj.ilosc;
+            ilosc.innerHTML = '\xa0' + "Ilość: " + obj.ilosc + '\xa0';
             ilosc.setAttribute("style","margin:0px;line-height:100px;");
             div.setAttribute("style","display:flex;margin-bottom:10px;");
 
+
+            divbts.appendChild(btplus);
+            divbts.appendChild(btminus);
+            deleteprall.appendChild(imgbt);
+            divbtdall.appendChild(deleteprall);
             div.appendChild(img);
             div.appendChild(namep);
             div.appendChild(ilosc);
+            div.appendChild(divbts);
+            div.appendChild(divbtdall);
+            div.appendChild(h3price);
             ogl.appendChild(div);
         }
     }
