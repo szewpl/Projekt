@@ -120,6 +120,9 @@
         if(login.value != "" && con.value == passsword.value && con.value !="" && passsword.value != "")
         {
             document.cookie = login.value + "=" + passsword.value;
+            sessionStorage.setItem("zalogowanyjako",login.value);
+        }else{
+            alert("Nie poprawne dane");
         }
     }
 </script>
