@@ -123,7 +123,7 @@
             var passsword = document.getElementById('password').value;
             var obj = {login:passsword};
             document.cookie = localStorage.getItem("konto") + "=" + JSON.stringify(obj);
-            localStorage.setItem("konto",(localStorage.getItem("konto")+1));
+            localStorage.setItem("konto",0/*(localStorage.getItem("konto")+1)*/);
             sessionStorage.setItem("zalogowanyjako",login.value);
         }else{
             alert("Nie poprawne dane");
