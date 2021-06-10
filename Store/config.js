@@ -53,9 +53,6 @@ let useraccount = document.getElementById("useraccount");
 let dmode = document.getElementById("darkmode");
 specialoffers.addEventListener("click", () => { window.location.href = "ofertyspecjalne.html" });
 
-if(localStorage.getItem("dark-mode")==null){
-    localStorage.setItem("dark-mode",false);
-}
 
 logo.innerHTML = Menu.logo.name;
 logo.setAttribute('style', 'width:32%;text-align:center;');
