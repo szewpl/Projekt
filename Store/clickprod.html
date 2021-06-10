@@ -1,17 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sklep z zabawkami</title>
+    <link rel="stylesheet" href="darkmode.css">
 </head>
+
 <body>
     <div id="container">
         <div id="menu">
-            <div id="logo" onselectstart = "return false;"></div>
-            <div id="specialoffers" onselectstart = "return false;"></div>
-            <div id="useraccount" onselectstart = "return false;"></div>
+            <div id="logo" onselectstart="return false;"></div>
+            <div id="specialoffers" onselectstart="return false;"></div>
+            <div id="useraccount" onselectstart="return false;"></div>
+            <div id="darkmode" onselectstart="return false;"></div>
         </div>
 
         <div id="bas"></div>
@@ -35,33 +39,38 @@
 <script src="categories.js"></script>
 <script src="products.js"></script>
 <script>
-    if(localStorage.getItem("product_id") <6 || localStorage.getItem("product_id")==null){
-        localStorage.setItem("product_id",6);
+    if (localStorage.getItem("product_id") < 6 || localStorage.getItem("product_id") == null) {
+        localStorage.setItem("product_id", 6);
     }
 
     function GetQueryString(q) {
-        var vars = [], hash;
+        var vars = [],
+            hash;
         var hashes = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
-        for(var i = 0; i < hashes.length; i++)
-        {
+        for (var i = 0; i < hashes.length; i++) {
             hash = hashes[i].split('=');
             vars[hash[0]] = hash[1];
         }
         return vars;
     };
-    
+
     var divbasket = document.createElement("div");
     divbasket.innerHTML = "Koszyk: " + localStorage.getItem("ilosczkoszyka");
     document.getElementById("bas").appendChild(divbasket);
-    document.getElementById("bas").addEventListener("click",()=>{window.location.href = "displaybasket.html";});
-    var obj = JSON.parse(localStorage.getItem("Produkt"+GetQueryString().produkt));
-    document.getElementById("header").innerHTML=obj.Nazwa;
-    document.getElementById("da").innerHTML=obj.Opis;
-    document.getElementById("price").innerHTML=parseFloat(obj.Cena).toFixed(2);
-    document.getElementById("img").src=obj.url;
+    document.getElementById("bas").addEventListener("click", () => {
+        window.location.href = "displaybasket.html";
+    });
+    var obj = JSON.parse(localStorage.getItem("Produkt" + GetQueryString().produkt));
+    document.getElementById("header").innerHTML = obj.Nazwa;
+    document.getElementById("da").innerHTML = obj.Opis;
+    document.getElementById("price").innerHTML = parseFloat(obj.Cena).toFixed(2);
+    document.getElementById("img").src = obj.url;
     var dk = document.getElementById("dodajdokoszyka");
-    if(dk){
-        dk.addEventListener("click",()=>{addingtobasket(JSON.parse(localStorage.getItem("koszykProdukt"+GetQueryString().produkt)))});
+    if (dk) {
+        dk.addEventListener("click", () => {
+            addingtobasket(JSON.parse(localStorage.getItem("koszykProdukt" + GetQueryString().produkt)))
+        });
     }
 </script>
+
 </html>

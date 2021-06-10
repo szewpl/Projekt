@@ -1,23 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sklep z zabawkami</title>
+
+    <style>
+        button {
+            border: 1px solid #ff3333;
+            cursor: pointer;
+            margin: 10px;
+        }
+    </style>
+
+    <link rel="stylesheet" href="darkmode.css">
 </head>
+
 <body>
     <div id="container">
         <div id="menu">
-            <div id="logo" onselectstart = "return false;"></div>
-            <div id="specialoffers" onselectstart = "return false;"></div>
-            <div id="useraccount" onselectstart = "return false;"></div>
+            <div id="logo" onselectstart="return false;"></div>
+            <div id="specialoffers" onselectstart="return false;"></div>
+            <div id="useraccount" onselectstart="return false;"></div>
+            <div id="darkmode" onselectstart="return false;"></div>
         </div>
 
         <div id="wysz" style="display: flex;">
             <input id="wyszukiwarka" type="text" placeholder="Wyszukiwarka">
         </div>
-        
+
         <div id="main" style="display: flex;">
             <div style="width: 80%;" id="products">
             </div>
@@ -30,19 +43,19 @@
 <script src="products.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/underscore@1.13.1/underscore-umd-min.js"></script>
 <script>
-    if(localStorage.getItem("product_id") <6 || localStorage.getItem("product_id")==null){
-        localStorage.setItem("product_id",6);
+    if (localStorage.getItem("product_id") < 6 || localStorage.getItem("product_id") == null) {
+        localStorage.setItem("product_id", 6);
     }
     display_categories();
     display_products();
-    for(let i =0;i<localStorage.getItem("product_id");i++){
-        if(localStorage.getItem("koszykProdukt"+i) == null)
-        {
-            var obj = JSON.parse(localStorage.getItem("Produkt"+i));
+    for (let i = 0; i < localStorage.getItem("product_id"); i++) {
+        if (localStorage.getItem("koszykProdukt" + i) == null) {
+            var obj = JSON.parse(localStorage.getItem("Produkt" + i));
             obj["ilosc"] = 0;
             obj["Cena"] = 0;
-            localStorage.setItem("koszykProdukt"+i,JSON.stringify(obj));
+            localStorage.setItem("koszykProdukt" + i, JSON.stringify(obj));
         }
     }
 </script>
+
 </html>

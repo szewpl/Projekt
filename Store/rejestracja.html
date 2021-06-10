@@ -1,65 +1,77 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sklep z zabawkami</title>
     <style>
-        #logowanie{
+        #logowanie {
             width: 370px;
             margin-left: auto;
             margin-right: auto;
             margin-top: 200px;
         }
-        #login{
+        
+        #login {
             width: 98%;
             height: 40px;
             margin-top: 10px;
             margin-bottom: 10px;
             font-size: 17px;
         }
-        #login:focus{
+        
+        #login:focus {
             outline: none;
         }
-        #password{
+        
+        #password {
             width: 98%;
             height: 40px;
             margin-top: 10px;
             margin-bottom: 10px;
             font-size: 17px;
         }
-        #password:focus{
+        
+        #password:focus {
             outline: none;
         }
-        #confirmpassword{
+        
+        #confirmpassword {
             width: 98%;
             height: 40px;
             margin-top: 10px;
             margin-bottom: 10px;
             font-size: 17px;
         }
-        #confirmpassword:focus{
+        
+        #confirmpassword:focus {
             outline: none;
         }
-        #submitz{
+        
+        #submitz {
             width: 100%;
             height: 70px;
             border: none;
             font-size: 22px;
             background-color: #ff3333;
         }
-        #submitz:focus{
+        
+        #submitz:focus {
             outline: 2px solid rgba(255, 255, 255, 0.418);
         }
     </style>
+    <link rel="stylesheet" href="darkmode.css">
 </head>
+
 <body>
     <div id="container">
         <div id="menu">
-            <div id="logo" onselectstart = "return false;"></div>
-            <div id="specialoffers" onselectstart = "return false;"></div>
-            <div id="useraccount" onselectstart = "return false;"></div>
+            <div id="logo" onselectstart="return false;"></div>
+            <div id="specialoffers" onselectstart="return false;"></div>
+            <div id="useraccount" onselectstart="return false;"></div>
+            <div id="darkmode" onselectstart="return false;"></div>
         </div>
         <div id="main">
             <div id="products"></div>
@@ -68,7 +80,8 @@
         <div id="logowanie">
             <lable>Login: </lable><br><input type="text" id="login"><br>
             <lable>Hasło: </lable><br><input type="password" id="password"><br>
-            <lable>Potwierdz hasło: </lable><a id="sprawdzanie"></a><br><input type="password" id="confirmpassword"><br><br>
+            <lable>Potwierdz hasło: </lable>
+            <a id="sprawdzanie"></a><br><input type="password" id="confirmpassword"><br><br>
             <a id="rej">Zaloguj sie</a><br><br>
             <input type="submit" id="submitz" value="Zarejestruj sie" onclick="check()">
         </div>
@@ -77,10 +90,12 @@
 <script src="config.js"></script>
 <script>
     document.getElementById("login").focus();
-    document.getElementById("rej").addEventListener("click",()=>{window.location.href = "form_account.html"});
-    document.getElementById("rej").setAttribute("style","text-decoration: underline;");
-    if(localStorage.getItem("product_id") <6 || localStorage.getItem("product_id")==null){
-        localStorage.setItem("product_id",6);
+    document.getElementById("rej").addEventListener("click", () => {
+        window.location.href = "form_account.html"
+    });
+    document.getElementById("rej").setAttribute("style", "text-decoration: underline;");
+    if (localStorage.getItem("product_id") < 6 || localStorage.getItem("product_id") == null) {
+        localStorage.setItem("product_id", 6);
     }
 
     var login = document.getElementById('login');
@@ -88,49 +103,49 @@
     var con = document.getElementById("confirmpassword");
     var a = document.getElementById("sprawdzanie");
 
-    
-    con.addEventListener("input",()=>{
-        if(con.value == passsword.value){
-            if(con.value == ""){
+
+    con.addEventListener("input", () => {
+        if (con.value == passsword.value) {
+            if (con.value == "") {
                 a.innerHTML = "";
-            }else{
+            } else {
                 a.innerHTML = "Pasuje";
             }
-        }else if(con.value != passsword.value){
-            if(con.value == ""){
+        } else if (con.value != passsword.value) {
+            if (con.value == "") {
                 a.innerHTML = "";
-            }else{
+            } else {
                 a.innerHTML = "Nie pasuje";
             }
         }
     });
 
-    passsword.addEventListener("input",()=>{
-        if(con.value == passsword.value){
-            if(passsword.value == ""){
+    passsword.addEventListener("input", () => {
+        if (con.value == passsword.value) {
+            if (passsword.value == "") {
                 a.innerHTML = "";
-            }else{
+            } else {
                 a.innerHTML = "Pasuje";
             }
-        }else if(con.value != passsword.value){
+        } else if (con.value != passsword.value) {
             a.innerHTML = "Nie pasuje";
         }
     });
 
-    function check(){
+    function check() {
         var login = document.getElementById('login');
         var passsword = document.getElementById('password');
-        if(login.value != "" && con.value == passsword.value && con.value !="" && passsword.value != "")
-        {
+        if (login.value != "" && con.value == passsword.value && con.value != "" && passsword.value != "") {
             var obj = {};
             obj[login.value] = passsword.value;
-            localStorage.setItem("Uzytkownik"+localStorage.getItem("konto"),JSON.stringify(obj));
-            localStorage.setItem("konto",(parseInt(localStorage.getItem("konto"))+1));
-            sessionStorage.setItem("zalogowanyjako",login.value);
+            localStorage.setItem("Uzytkownik" + localStorage.getItem("konto"), JSON.stringify(obj));
+            localStorage.setItem("konto", (parseInt(localStorage.getItem("konto")) + 1));
+            sessionStorage.setItem("zalogowanyjako", login.value);
             window.location.href = "index.html";
-        }else{
+        } else {
             alert("Nie poprawne dane");
         }
     }
 </script>
+
 </html>

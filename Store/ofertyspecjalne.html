@@ -1,23 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sklep z zabawkami</title>
+    <link rel="stylesheet" href="darkmode.css">
 </head>
+
 <body>
     <div id="container">
         <div id="menu">
-            <div id="logo" onselectstart = "return false;"></div>
-            <div id="specialoffers" onselectstart = "return false;"></div>
-            <div id="useraccount" onselectstart = "return false;"></div>
+            <div id="logo" onselectstart="return false;"></div>
+            <div id="specialoffers" onselectstart="return false;"></div>
+            <div id="useraccount" onselectstart="return false;"></div>
+            <div id="darkmode" onselectstart="return false;"></div>
         </div>
 
         <div id="wysz" style="display: flex;">
             <input id="wyszukiwarka" type="text" placeholder="Wyszukiwarka">
         </div>
-        
+
         <div id="main" style="display: flex;">
             <div style="width: 80%;" id="products">
             </div>
@@ -30,35 +34,36 @@
 <script src="products.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/underscore@1.13.1/underscore-umd-min.js"></script>
 <script>
-    if(localStorage.getItem("product_id") <6 || localStorage.getItem("product_id")==null){
-        localStorage.setItem("product_id",6);
+    if (localStorage.getItem("product_id") < 6 || localStorage.getItem("product_id") == null) {
+        localStorage.setItem("product_id", 6);
     }
     display_categories();
-    for(let i =0;i<localStorage.getItem("product_id");i++){
-        if(localStorage.getItem("koszykProdukt"+i) == null)
-        {
-            var obj = JSON.parse(localStorage.getItem("Produkt"+i));
+    for (let i = 0; i < localStorage.getItem("product_id"); i++) {
+        if (localStorage.getItem("koszykProdukt" + i) == null) {
+            var obj = JSON.parse(localStorage.getItem("Produkt" + i));
             obj["ilosc"] = 0;
             obj["Cena"] = 0;
-            localStorage.setItem("koszykProdukt"+i,JSON.stringify(obj));
+            localStorage.setItem("koszykProdukt" + i, JSON.stringify(obj));
         }
     }
 
     var p = document.getElementById("products");
-    for(let i = 0;i<parseInt(localStorage.getItem("product_id"));i++){
-        var obj = JSON.parse(localStorage.getItem("Produkt"+i));
-        if(obj.Ofertaspecjalna == "true"){
+    for (let i = 0; i < parseInt(localStorage.getItem("product_id")); i++) {
+        var obj = JSON.parse(localStorage.getItem("Produkt" + i));
+        if (obj.Ofertaspecjalna == "true") {
             var img = document.createElement("img");
             var nameimg = document.createElement("h3");
-            var divogl = document.createElement("div"); 
+            var divogl = document.createElement("div");
             var div = document.createElement("div");
             var bt = document.createElement("button");
             var a = document.createElement("a");
-            
-            
+
+
             bt.innerHTML = "Dodaj do koszyka";
-            bt.setAttribute("style","width:100px;height:50px;");
-            bt.addEventListener("click",()=>{addingtobasket(JSON.parse(localStorage.getItem("koszykProdukt"+i)));});
+            bt.setAttribute("style", "width:100px;height:50px;");
+            bt.addEventListener("click", () => {
+                addingtobasket(JSON.parse(localStorage.getItem("koszykProdukt" + i)));
+            });
             let l = obj.Cena;
             a.innerHTML = obj.Opis + "<br>" + parseFloat(l).toFixed(2) + "<br>";
             div.style.float = "right";
@@ -66,14 +71,20 @@
             img.src = obj.url;
             img.style.width = "300px";
             img.style.height = "300px";
-            nameimg.setAttribute("style","width:100%;height:30%;");
-            a.setAttribute("style","width:100%;height:70%;");
+            nameimg.setAttribute("style", "width:100%;height:30%;");
+            a.setAttribute("style", "width:100%;height:70%;");
             divogl.style.display = "flex";
-            img.addEventListener("click",()=>{window.location.href = "clickprod.html?produkt=" + JSON.parse(localStorage.getItem("Produkt"+i)).Id;});
-            nameimg.addEventListener("click",()=>{window.location.href = "clickprod.html?produkt=" + JSON.parse(localStorage.getItem("Produkt"+i)).Id;});
-            a.addEventListener("click",()=>{window.location.href = "clickprod.html?produkt=" + JSON.parse(localStorage.getItem("Produkt"+i)).Id;});
+            img.addEventListener("click", () => {
+                window.location.href = "clickprod.html?produkt=" + JSON.parse(localStorage.getItem("Produkt" + i)).Id;
+            });
+            nameimg.addEventListener("click", () => {
+                window.location.href = "clickprod.html?produkt=" + JSON.parse(localStorage.getItem("Produkt" + i)).Id;
+            });
+            a.addEventListener("click", () => {
+                window.location.href = "clickprod.html?produkt=" + JSON.parse(localStorage.getItem("Produkt" + i)).Id;
+            });
 
-            
+
             div.appendChild(nameimg);
             div.appendChild(a);
             div.appendChild(bt);
@@ -81,7 +92,8 @@
             divogl.appendChild(div);
             p.appendChild(divogl);
         }
-        
+
     }
 </script>
+
 </html>

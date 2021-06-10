@@ -1,23 +1,69 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sklep z zabawkami</title>
+    <link rel="stylesheet" href="darkmode.css">
+    <style>
+        #mainadd {
+            height: 80vh;
+            text-align: center;
+        }
+        
+        #addproducts {
+            height: 100%;
+        }
+        
+        #addselect,
+        #name,
+        #url,
+        #price,
+        #selos {
+            width: 75%;
+            height: 10%;
+            font-size: 30px;
+            border: 1px solid #ff3333;
+            margin: 5px auto;
+        }
+        
+        #textarea {
+            width: 75%;
+            height: 15%;
+            font-size: 30px;
+            border: 1px solid #ff3333;
+            margin: 5px auto;
+        }
+        
+        #hdr {
+            text-align: center;
+        }
+        
+        #addprod {
+            border-color: #ff3333;
+            width: 20%;
+            height: 5%;
+            margin-top: 5px;
+            cursor: pointer;
+        }
+    </style>
 </head>
+
 <body>
     <div id="container">
         <div id="menu">
-            <div id="logo" onselectstart = "return false;"></div>
-            <div id="specialoffers" onselectstart = "return false;"></div>
-            <div id="useraccount" onselectstart = "return false;"></div>
+            <div id="logo" onselectstart="return false;"></div>
+            <div id="specialoffers" onselectstart="return false;"></div>
+            <div id="useraccount" onselectstart="return false;"></div>
+            <div id="darkmode" onselectstart="return false;"></div>
         </div>
         <div id="main">
             <div id="products"></div>
             <div id="categories"></div>
         </div>
-        <h3>Tworzenie produktu</h3>
+        <h3 id="hdr">Tworzenie produktu</h3>
         <div id="mainadd" style="display: flex;">
             <div id="addproduct">
                 <div id="addproducts">
@@ -26,7 +72,7 @@
                     <input type="url" placeholder="Wpisz adres URL zdjecia" id="url"><br>
                     <input type="number" min="0" id="price" placeholder="Wpisz cene produktu"><br>
                     <textarea id="textarea" rows="2" cols="50" style="resize: none;" placeholder="Wpisz krótki opis"></textarea><br>
-                    <label>Czy to oferta specjalna</label><select id="selos">
+                    <label>Czy to oferta specjalna</label><br><select id="selos">
                         <option value="true">Tak</option>
                         <option value="false">Nie</option>
                     </select>
@@ -41,8 +87,9 @@
 <script src="products.js"></script>
 <script src="dprod.js"></script>
 <script>
-    if(localStorage.getItem("product_id") <6 || localStorage.getItem("product_id")==null){
-        localStorage.setItem("product_id",6);
+    if (localStorage.getItem("product_id") < 6 || localStorage.getItem("product_id") == null) {
+        localStorage.setItem("product_id", 6);
     }
 </script>
+
 </html>

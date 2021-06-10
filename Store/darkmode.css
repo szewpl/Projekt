@@ -1,0 +1,38 @@
+.dark-mode {
+    background-color: #333;
+    color: #eee;
+}
+
+.dark-mode #wyszukiwarka {
+    background-color: #333;
+    border: 1px solid #ff3333;
+    color: #eee;
+}
+
+#wyszukiwarka {
+    width: 60vh;
+    height: 20px;
+    margin-bottom: 5px;
+}
+
+.dark-mode button {
+    background-color: #333;
+    color: #eee;
+}
+
+.dark-mode input,
+.dark-mode #textarea {
+    background-color: #333;
+    color: #eee;
+}
+
+.dark-mode select {
+    background-color: #333;
+    color: #eee;
+}
+
+.dark-mode select option {
+    background-color: #333;
+    color: #eee;
+    border: 1px solid #ff3333;
+}
