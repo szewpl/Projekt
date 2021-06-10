@@ -73,7 +73,12 @@
             imgbt.src = "https://image.flaticon.com/icons/png/512/1214/1214428.png";
             imgbt.setAttribute("style", "width:35px;height:35px;");
             imgbt.draggable = false;
-            deleteprall.setAttribute("style", "width:50px;height:50px;margin-top:25px;margin-left:10px;margin-right:10px;background-color:white;border:none;");
+            if(localStorage.getItem("dark-mode")=="true"){
+                deleteprall.setAttribute("style", "width:50px;height:50px;margin-top:25px;margin-left:10px;margin-right:10px;background-color:#333;border:none;");
+            }else{
+                deleteprall.setAttribute("style", "width:50px;height:50px;margin-top:25px;margin-left:10px;margin-right:10px;background-color:white;border:none;");
+            }
+            
             deleteprall.addEventListener("click", () => {
                 deleteprallf(JSON.parse(localStorage.getItem("koszykProdukt" + i)));
                 window.location.reload();

@@ -55,14 +55,28 @@ specialoffers.addEventListener("click", () => { window.location.href = "ofertysp
 
 
 logo.innerHTML = Menu.logo.name;
-logo.setAttribute('style', 'width:32%;text-align:center;border-right:5px solid white;');
+if(localStorage.getItem("dark-mode").toString()=="true"){
+    logo.setAttribute('style', 'width:32%;text-align:center;border-right:5px solid #333;');
+}else{
+    logo.setAttribute('style', 'width:32%;text-align:center;border-right:5px solid white;');
+}
+
 logo.addEventListener('click', () => { window.location.href = "index.html" });
 specialoffers.innerHTML = Menu.specialoffers.name;
-specialoffers.setAttribute('style', 'width:32%;text-align:center;border-right:5px solid white;');
+if(localStorage.getItem("dark-mode").toString()=="true"){
+    specialoffers.setAttribute('style', 'width:32%;text-align:center;border-right:5px solid #333;');
+}else{
+    specialoffers.setAttribute('style', 'width:32%;text-align:center;border-right:5px solid white;');
+}
+
 useraccount.innerHTML = Menu.useraccount.name;
-useraccount.setAttribute('style', 'width:32%;text-align:center;');
+if(localStorage.getItem("dark-mode").toString()=="true"){
+    useraccount.setAttribute('style', 'width:32%;text-align:center;border-right:5px solid #333;');
+}else{
+    useraccount.setAttribute('style', 'width:32%;text-align:center;border-right:5px solid white;');
+}
 dmode.innerHTML = Menu.darkmode.name[0];
-dmode.setAttribute('style', 'width: 4%; text-align:center; border-left:5px solid white;');
+dmode.setAttribute('style', 'width: 4%; text-align:center;');
 
 menu.setAttribute('style', 'background-color: #ff3333;display:flex;height:65px;color:white;font-size:32px;line-height: 65px;cursor:pointer;margin-bottom:10px;');
 
@@ -95,7 +109,7 @@ if (localStorage.getItem("ilosczkoszyka") == null) {
 
 var divbasket = document.createElement("div");
 
-divbasket.setAttribute('style', 'margin: 0 10px 5px 10px; border:1px solid #ff3333; padding: 0 5px')
+divbasket.setAttribute('style', 'margin: 0 10px 5px 10px; border:1px solid #ff3333; padding: 0 5px;cursor:pointer;')
 
 function addingtobasket(obj) {
     localStorage.setItem("ilosczkoszyka", (parseInt(localStorage.getItem("ilosczkoszyka"))) + 1);
@@ -108,6 +122,8 @@ function addingtobasket(obj) {
         wysz.appendChild(divbasket);
     }
 }
+
+
 
 function deletepr(obj) {
     localStorage.setItem("ilosczkoszyka", (parseInt(localStorage.getItem("ilosczkoszyka"))) - 1);
@@ -172,6 +188,7 @@ dmode.addEventListener('click', (e) => {
     const darkMode = document.body.classList.toggle('dark-mode');
     e.target.blur();
     localStorage.setItem('dark-mode', darkMode);
+    window.location.reload();
 });
 
 if (JSON.parse(localStorage.getItem('dark-mode'))) {

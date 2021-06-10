@@ -18,6 +18,7 @@
 .dark-mode button {
     background-color: #333;
     color: #eee;
+    border: 1px solid #ff3333;
 }
 
 .dark-mode input,
