@@ -53,28 +53,20 @@ let useraccount = document.getElementById("useraccount");
 let dmode = document.getElementById("darkmode");
 specialoffers.addEventListener("click", () => { window.location.href = "ofertyspecjalne.html" });
 
+if(localStorage.getItem("dark-mode")==null){
+    localStorage.setItem("dark-mode",false);
+}
 
 logo.innerHTML = Menu.logo.name;
-if(localStorage.getItem("dark-mode").toString()=="true"){
-    logo.setAttribute('style', 'width:32%;text-align:center;border-right:5px solid #333;');
-}else{
-    logo.setAttribute('style', 'width:32%;text-align:center;border-right:5px solid white;');
-}
+logo.setAttribute('style', 'width:32%;text-align:center;');
+
 
 logo.addEventListener('click', () => { window.location.href = "index.html" });
 specialoffers.innerHTML = Menu.specialoffers.name;
-if(localStorage.getItem("dark-mode").toString()=="true"){
-    specialoffers.setAttribute('style', 'width:32%;text-align:center;border-right:5px solid #333;');
-}else{
-    specialoffers.setAttribute('style', 'width:32%;text-align:center;border-right:5px solid white;');
-}
+specialoffers.setAttribute('style', 'width:32%;text-align:center;margin-right:5px;');
 
 useraccount.innerHTML = Menu.useraccount.name;
-if(localStorage.getItem("dark-mode").toString()=="true"){
-    useraccount.setAttribute('style', 'width:32%;text-align:center;border-right:5px solid #333;');
-}else{
-    useraccount.setAttribute('style', 'width:32%;text-align:center;border-right:5px solid white;');
-}
+useraccount.setAttribute('style', 'width:32%;text-align:center;');
 dmode.innerHTML = Menu.darkmode.name[0];
 dmode.setAttribute('style', 'width: 4%; text-align:center;');
 
@@ -179,16 +171,18 @@ if (sessionStorage.getItem("zalogowanyjako") == "admin") {
     }
 }
 
-
-dmode.addEventListener('click', (e) => {
+dmode.addEventListener('click', (e) => { 
     if (dmode.textContent == Menu.darkmode.name[0])
+    {
         dmode.innerHTML = Menu.darkmode.name[1];
-    else
+    }
+    else{
         dmode.innerHTML = Menu.darkmode.name[0];
+    }
+        
     const darkMode = document.body.classList.toggle('dark-mode');
     e.target.blur();
     localStorage.setItem('dark-mode', darkMode);
-    window.location.reload();
 });
 
 if (JSON.parse(localStorage.getItem('dark-mode'))) {
